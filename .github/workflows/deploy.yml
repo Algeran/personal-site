@@ -24,3 +24,10 @@ jobs:
             --exclude ".git/*" \
             --exclude ".github/*" \
             --exclude "README.md"
+
+          # aws s3 sync guesses "text/html" with no charset for .html files;
+          # force the correct content-type explicitly so it doesn't rely on
+          # the in-document <meta charset> alone.
+          aws s3 cp index.html "s3://${YC_BUCKET}/index.html" \
+            --endpoint-url https://storage.yandexcloud.net \
+            --content-type "text/html; charset=utf-8"
