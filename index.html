@@ -138,11 +138,27 @@
   .links a{text-decoration:none; border-bottom:1px solid transparent; color:var(--amber-txt);}
   .links a:hover{border-bottom-color:var(--amber-soft);}
   footer .foot-kv{margin-top:20px;}
+
+  .langswitch{
+    position:fixed; top:14px; right:20px; z-index:10;
+    display:flex; gap:2px; background:var(--surface); border:1px solid var(--line);
+    border-radius:999px; padding:3px; font-family:var(--mono); font-size:12.5px; font-weight:600;
+  }
+  .langswitch button{
+    border:none; background:transparent; color:var(--ink-dim); cursor:pointer;
+    padding:5px 12px; border-radius:999px; font:inherit;
+  }
+  .langswitch button[aria-pressed="true"]{background:var(--amber); color:var(--bg);}
+  .langswitch button:hover{color:var(--ink);}
 </style>
 </head>
 <body>
 
 <div class="strip"></div>
+<div class="langswitch" role="group" aria-label="Language">
+  <button type="button" data-lang-btn="en">EN</button>
+  <button type="button" data-lang-btn="ru">RU</button>
+</div>
 <header class="hero">
   <div class="glow"></div>
   <svg class="topo" viewBox="0 0 920 560" preserveAspectRatio="xMaxYMin slice" aria-hidden="true">
@@ -170,46 +186,46 @@
   </svg>
   <div class="wrap">
     <div class="statusline"><span class="dot"></span> status: Ready &nbsp;·&nbsp; uptime: 9y</div>
-    <h1>Yaroslav Ivchenkov</h1>
-    <div class="role">Senior Software Engineer — Kubernetes Platform Engineering</div>
-    <div class="loc">Remote · UTC+3</div>
-    <p class="lede">I help engineering teams turn fragile Kubernetes clusters into infrastructure that upgrades, scales, and heals itself — whatever hardware it has to run on.</p>
+    <h1 data-i18n="name">Yaroslav Ivchenkov</h1>
+    <div class="role" data-i18n="role">Senior Software Engineer — Kubernetes Platform Engineering</div>
+    <div class="loc" data-i18n="loc">Remote · UTC+3</div>
+    <p class="lede" data-i18n="lede">I help engineering teams turn fragile Kubernetes clusters into infrastructure that upgrades, scales, and heals itself — whatever hardware it has to run on.</p>
   </div>
 </header>
 
 <div class="wrap">
 
   <section class="about">
-    <h2 class="eyebrow">how I help</h2>
-    <p>I close the gap between a cluster's desired state and what's actually running — building the operators, admission controls, and multi-cluster tooling that let a platform look after itself.</p>
-    <p>In practice: CRD-based operators that encode real operational judgment. Multi-cluster orchestration that behaves the same whether the target is a hyperscaler region or a rack in a data center. Helm charts and CLIs a team can actually run, day to day, long after rollout.</p>
+    <h2 class="eyebrow" data-i18n="about_eyebrow">how I help</h2>
+    <p data-i18n="about_p1">I close the gap between a cluster's desired state and what's actually running — building the operators, admission controls, and multi-cluster tooling that let a platform look after itself.</p>
+    <p data-i18n="about_p2">In practice: CRD-based operators that encode real operational judgment. Multi-cluster orchestration that behaves the same whether the target is a hyperscaler region or a rack in a data center. Helm charts and CLIs a team can actually run, day to day, long after rollout.</p>
   </section>
 
   <section class="focus">
-    <h2 class="eyebrow">what I bring</h2>
+    <h2 class="eyebrow" data-i18n="focus_eyebrow">what I bring</h2>
     <div class="focus-grid">
-      <div class="resource"><div class="kind">Operator</div><h3 class="name">CRD reconciliation</h3><div class="desc">Software that watches a system and fixes drift on its own, so nobody gets paged for it.</div></div>
-      <div class="resource"><div class="kind">Multi-cluster</div><h3 class="name">Cluster API (CAPI)</h3><div class="desc">One provisioning story across vSphere, OpenStack, AWS, bare-metal/SSH, and whatever's next.</div></div>
-      <div class="resource"><div class="kind">Delivery</div><h3 class="name">Helm &amp; CLI tooling</h3><div class="desc">Packaging a cluster ships confidently — versioned, upgradeable, no manual pre-flight required.</div></div>
-      <div class="resource"><div class="kind">Security</div><h3 class="name">Admission control</h3><div class="desc">Automated policy checks that stop unsafe changes before they reach production.</div></div>
-      <div class="resource"><div class="kind">Lifecycle</div><h3 class="name">Zero-drama upgrades</h3><div class="desc">Version-gated rollouts and day-two automation, so upgrading a cluster stops being an event.</div></div>
-      <div class="resource"><div class="kind">Workflow</div><h3 class="name">AI-augmented delivery</h3><div class="desc">I build my own agent tooling around the systems I own — it keeps several workstreams review-ready at once.</div></div>
+      <div class="resource"><div class="kind" data-i18n="c1_kind">Operator</div><h3 class="name" data-i18n="c1_name">CRD reconciliation</h3><div class="desc" data-i18n="c1_desc">Software that watches a system and fixes drift on its own, so nobody gets paged for it.</div></div>
+      <div class="resource"><div class="kind" data-i18n="c2_kind">Multi-cluster</div><h3 class="name" data-i18n="c2_name">Cluster API (CAPI)</h3><div class="desc" data-i18n="c2_desc">One provisioning story across vSphere, OpenStack, AWS, bare-metal/SSH, and other platforms.</div></div>
+      <div class="resource"><div class="kind" data-i18n="c3_kind">Delivery</div><h3 class="name" data-i18n="c3_name">Helm &amp; CLI tooling</h3><div class="desc" data-i18n="c3_desc">Packaging a cluster ships confidently — versioned, upgradeable, no manual pre-flight required.</div></div>
+      <div class="resource"><div class="kind" data-i18n="c4_kind">Security</div><h3 class="name" data-i18n="c4_name">Admission control</h3><div class="desc" data-i18n="c4_desc">Automated policy checks that stop unsafe changes before they reach production.</div></div>
+      <div class="resource"><div class="kind" data-i18n="c5_kind">Lifecycle</div><h3 class="name" data-i18n="c5_name">Zero-drama upgrades</h3><div class="desc" data-i18n="c5_desc">Version-gated rollouts and day-two automation, so upgrading a cluster stops being an event.</div></div>
+      <div class="resource"><div class="kind" data-i18n="c6_kind">Workflow</div><h3 class="name" data-i18n="c6_name">AI-augmented delivery</h3><div class="desc" data-i18n="c6_desc">I build my own agent tooling around the systems I own — it keeps several workstreams review-ready at once.</div></div>
     </div>
   </section>
 
   <section class="certs">
-    <h2 class="eyebrow" style="width:100%">verified</h2>
+    <h2 class="eyebrow" style="width:100%" data-i18n="certs_eyebrow">verified</h2>
     <div class="cert"><b>CKA</b> — Certified Kubernetes Administrator, Linux Foundation</div>
     <div class="cert"><b>AWS CCP</b> — AWS Certified Cloud Practitioner</div>
   </section>
 
   <section class="more">
-    <h2 class="eyebrow">full history</h2>
-    <p class="pointer">This is the short version. Current role and full background live on <a href="https://www.linkedin.com/in/yaroslav-ivchenkov/">LinkedIn</a>.</p>
+    <h2 class="eyebrow" data-i18n="more_eyebrow">full history</h2>
+    <p class="pointer" data-i18n="more_pointer">This is the short version. Current role and full background live on <a href="https://www.linkedin.com/in/yaroslav-ivchenkov/">LinkedIn</a>.</p>
   </section>
 
   <footer>
-    <h2 class="eyebrow">connect</h2>
+    <h2 class="eyebrow" data-i18n="footer_eyebrow">connect</h2>
     <div class="links">
       <a id="email-link" href="#">Email</a>
       <a href="https://www.linkedin.com/in/yaroslav-ivchenkov/">LinkedIn ↗</a>
@@ -225,6 +241,67 @@
     var user = "ivchenkov.yv+site", host = "gmail.com";
     var el = document.getElementById("email-link");
     if(el){ el.href = "mailto:" + user + "@" + host; }
+  })();
+</script>
+
+<script>
+  (function(){
+    var I18N = {
+      name: {en:"Yaroslav Ivchenkov", ru:"Ярослав Ивченков"},
+      role: {en:"Senior Software Engineer — Kubernetes Platform Engineering", ru:"Senior Software Engineer — инженер Kubernetes-платформ"},
+      loc: {en:"Remote · UTC+3", ru:"Remote · UTC+3"},
+      lede: {en:"I help engineering teams turn fragile Kubernetes clusters into infrastructure that upgrades, scales, and heals itself — whatever hardware it has to run on.", ru:"Я помогаю инженерным командам превращать хрупкие Kubernetes-кластеры в инфраструктуру, которая сама обновляется, масштабируется и восстанавливается — на любом железе, где ей приходится работать."},
+      about_eyebrow: {en:"how I help", ru:"чем я помогаю"},
+      about_p1: {en:"I close the gap between a cluster's desired state and what's actually running — building the operators, admission controls, and multi-cluster tooling that let a platform look after itself.", ru:"Я закрываю разрыв между желаемым состоянием кластера и тем, что реально работает — создаю операторы, admission-контроллеры и инструменты мульти-кластерной оркестрации, благодаря которым платформа справляется сама."},
+      about_p2: {en:"In practice: CRD-based operators that encode real operational judgment. Multi-cluster orchestration that behaves the same whether the target is a hyperscaler region or a rack in a data center. Helm charts and CLIs a team can actually run, day to day, long after rollout.", ru:"На практике: операторы на основе CRD, в которые заложена реальная операционная экспертиза. Мульти-кластерная оркестрация, которая работает одинаково — что в регионе гиперскейлера, что на стойке в дата-центре. Helm-чарты и CLI, которыми команда реально пользуется изо дня в день, долго после выката."},
+      focus_eyebrow: {en:"what I bring", ru:"что я предлагаю"},
+      c1_kind:{en:"Operator", ru:"Оператор"},
+      c1_name:{en:"CRD reconciliation", ru:"Синхронизация CRD"},
+      c1_desc:{en:"Software that watches a system and fixes drift on its own, so nobody gets paged for it.", ru:"ПО, которое следит за системой и само устраняет дрифт — чтобы никого не поднимали по тревоге."},
+      c2_kind:{en:"Multi-cluster", ru:"Мульти-кластер"},
+      c2_name:{en:"Cluster API (CAPI)", ru:"Cluster API (CAPI)"},
+      c2_desc:{en:"One provisioning story across vSphere, OpenStack, AWS, bare-metal/SSH, and other platforms.", ru:"Единый сценарий провижининга — vSphere, OpenStack, AWS, bare-metal/SSH и другие платформы."},
+      c3_kind:{en:"Delivery", ru:"Доставка"},
+      c3_name:{en:"Helm &amp; CLI tooling", ru:"Helm и CLI-инструменты"},
+      c3_desc:{en:"Packaging a cluster ships confidently — versioned, upgradeable, no manual pre-flight required.", ru:"Кластер разворачивается уверенно — с версионированием, возможностью обновления и без ручных проверок перед запуском."},
+      c4_kind:{en:"Security", ru:"Безопасность"},
+      c4_name:{en:"Admission control", ru:"Admission-контроль"},
+      c4_desc:{en:"Automated policy checks that stop unsafe changes before they reach production.", ru:"Автоматические проверки политик, которые предотвращают небезопасные изменения до того, как они попадут в продакшн."},
+      c5_kind:{en:"Lifecycle", ru:"Жизненный цикл"},
+      c5_name:{en:"Zero-drama upgrades", ru:"Апгрейды без драмы"},
+      c5_desc:{en:"Version-gated rollouts and day-two automation, so upgrading a cluster stops being an event.", ru:"Поэтапные обновления с привязкой к версии и day-two автоматизация — апгрейд кластера перестаёт быть событием."},
+      c6_kind:{en:"Workflow", ru:"Процесс работы"},
+      c6_name:{en:"AI-augmented delivery", ru:"Доставка с ИИ-усилением"},
+      c6_desc:{en:"I build my own agent tooling around the systems I own — it keeps several workstreams review-ready at once.", ru:"Я строю собственные агентные инструменты вокруг систем, которыми владею — это держит сразу несколько потоков работы готовыми к ревью."},
+      certs_eyebrow:{en:"verified", ru:"сертификации"},
+      more_eyebrow:{en:"full history", ru:"полная история"},
+      more_pointer:{en:'This is the short version. Current role and full background live on <a href="https://www.linkedin.com/in/yaroslav-ivchenkov/">LinkedIn</a>.', ru:'Это короткая версия. Текущая должность и полная история — в <a href="https://www.linkedin.com/in/yaroslav-ivchenkov/">LinkedIn</a>.'},
+      footer_eyebrow:{en:"connect", ru:"связь"}
+    };
+
+    function detectLang(){
+      var stored = localStorage.getItem('site-lang');
+      if(stored === 'en' || stored === 'ru') return stored;
+      return (navigator.language||'').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'en';
+    }
+
+    function applyLang(lang){
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(function(el){
+        var key = el.getAttribute('data-i18n');
+        if(I18N[key] && I18N[key][lang]) el.innerHTML = I18N[key][lang];
+      });
+      document.querySelectorAll('[data-lang-btn]').forEach(function(btn){
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-lang-btn') === lang ? 'true' : 'false');
+      });
+      localStorage.setItem('site-lang', lang);
+    }
+
+    document.querySelectorAll('[data-lang-btn]').forEach(function(btn){
+      btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang-btn')); });
+    });
+
+    applyLang(detectLang());
   })();
 </script>
 </body>
