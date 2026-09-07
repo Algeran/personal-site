@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yaroslav Ivchenkov — Kubernetes Platform Engineer</title>
+<meta name="description" content="Senior Software Engineer specializing in Kubernetes platform engineering — operators, multi-cluster orchestration, and Helm tooling. Remote.">
+<meta property="og:title" content="Yaroslav Ivchenkov — Kubernetes Platform Engineer">
+<meta property="og:description" content="Senior Software Engineer specializing in Kubernetes platform engineering — operators, multi-cluster orchestration, and Helm tooling. Remote.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    color-scheme: light dark;
+    --bg:#fbf1e6;
+    --surface:#f4e3d0;
+    --line:#ddbe97;
+    --ink:#2c1d12;
+    --ink-dim:#75563a;
+    --amber:#d85f0e;
+    --amber-soft:#b9500c;
+    --amber-txt:#9c470b;
+    --teal:#0e8f86;
+    --teal-txt:#0b6d66;
+    --violet-txt:#7a2f9c;
+    --ready:#2f8a52;
+    --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans:'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#1c130f;
+      --surface:#251a14;
+      --line:#432f22;
+      --ink:#f7ead9;
+      --ink-dim:#c4a488;
+      --amber:#ff9d3f;
+      --amber-soft:#ffb56b;
+      --amber-txt:#ff9d3f;
+      --teal:#2ee0d0;
+      --teal-txt:#2ee0d0;
+      --violet-txt:#e585ef;
+      --ready:#68e08a;
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html{background:var(--bg);}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--amber-txt);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+  h1,h2,h3{text-wrap:balance; font-family:var(--mono); margin:0; letter-spacing:-0.01em;}
+
+  .strip{height:5px; width:100%; background:linear-gradient(90deg, var(--amber) 0%, var(--teal) 100%);}
+
+  .topo{
+    position:absolute; inset:0; width:100%; height:560px;
+    opacity:.7; pointer-events:none;
+  }
+  @media (max-width:760px){ .topo{display:none;} }
+  .glow{
+    position:absolute; top:-220px; right:-160px; width:680px; height:680px; border-radius:50%;
+    background:radial-gradient(circle, color-mix(in srgb, var(--amber) 30%, transparent) 0%, color-mix(in srgb, var(--teal) 16%, transparent) 55%, transparent 78%);
+    pointer-events:none; filter:blur(4px);
+  }
+
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+
+  header.hero{
+    position:relative;
+    padding:72px 0 64px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .statusline{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--mono); font-size:13px; color:var(--ink-dim);
+    margin-bottom:28px; position:relative; z-index:1;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ready); box-shadow:0 0 0 3px color-mix(in srgb, var(--ready) 30%, transparent);}
+  .hero h1{font-size:clamp(32px,5vw,52px); color:var(--ink); position:relative; z-index:1;}
+  .hero .role{
+    font-family:var(--sans); font-weight:600; font-size:19px; color:var(--amber);
+    margin-top:14px; position:relative; z-index:1;
+  }
+  .hero .loc{
+    font-family:var(--mono); font-size:13px; color:var(--teal-txt); margin-top:10px; position:relative; z-index:1; font-weight:600;
+  }
+  .hero p.lede{
+    max-width:60ch; margin-top:26px; font-size:17px; color:var(--ink-dim); position:relative; z-index:1;
+  }
+
+  .kv{font-family:var(--mono); font-size:12px; color:var(--ink-dim);}
+  .kv b{color:var(--teal-txt); font-weight:600;}
+
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h2.eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--teal-txt); margin-bottom:18px; display:flex; align-items:center; gap:10px; font-weight:600;
+  }
+  h2.eyebrow::before{content:'#'; color:var(--amber);}
+
+  .about p{max-width:66ch; font-size:16px; color:var(--ink); margin:0 0 16px;}
+
+  .focus-grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px;
+  }
+  .resource{
+    background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--amber);
+    border-radius:3px; padding:16px 18px;
+  }
+  .resource .kind{font-family:var(--mono); font-size:11px; color:var(--amber-txt); text-transform:uppercase; letter-spacing:.06em; font-weight:600;}
+  .resource h3.name{font-family:var(--sans); font-weight:600; font-size:15px; margin-top:6px;}
+  .resource .desc{font-size:13.5px; color:var(--ink-dim); margin-top:6px; line-height:1.45;}
+
+  .certs{display:flex; gap:12px; flex-wrap:wrap;}
+  .cert{font-family:var(--mono); font-size:12.5px; border:1px solid var(--line); border-radius:2px; padding:8px 12px; color:var(--ink-dim); background:var(--surface);}
+  .cert b{color:var(--violet-txt); font-weight:600;}
+
+  .pointer{
+    font-size:15.5px; color:var(--ink-dim); max-width:56ch; margin:0;
+  }
+  .pointer a{color:var(--amber-txt); font-weight:600; text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--amber) 50%, transparent);}
+
+  footer{padding:48px 0 72px;}
+  .links{display:flex; gap:20px; flex-wrap:wrap; font-family:var(--mono); font-size:14px; font-weight:600;}
+  .links a{text-decoration:none; border-bottom:1px solid transparent; color:var(--amber-txt);}
+  .links a:hover{border-bottom-color:var(--amber-soft);}
+  footer .foot-kv{margin-top:20px;}
+</style>
+</head>
+<body>
+
+<div class="strip"></div>
+<header class="hero">
+  <div class="glow"></div>
+  <svg class="topo" viewBox="0 0 920 560" preserveAspectRatio="xMaxYMin slice" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.55" style="color:var(--line)">
+      <line x1="620" y1="40" x2="760" y2="120"/>
+      <line x1="760" y1="120" x2="880" y2="70"/>
+      <line x1="760" y1="120" x2="820" y2="230"/>
+      <line x1="620" y1="40" x2="700" y2="220"/>
+      <line x1="700" y1="220" x2="820" y2="230"/>
+      <line x1="700" y1="220" x2="640" y2="330"/>
+      <line x1="820" y1="230" x2="900" y2="340"/>
+      <line x1="640" y1="330" x2="760" y2="410"/>
+      <line x1="900" y1="340" x2="760" y2="410"/>
+    </g>
+    <g fill="var(--teal)">
+      <circle cx="620" cy="40" r="4.5"/>
+      <circle cx="760" cy="120" r="4.5" fill="var(--amber)"/>
+      <circle cx="880" cy="70" r="4.5"/>
+      <circle cx="700" cy="220" r="4.5"/>
+      <circle cx="820" cy="230" r="4.5"/>
+      <circle cx="640" cy="330" r="4.5"/>
+      <circle cx="900" cy="340" r="4.5" fill="var(--amber)"/>
+      <circle cx="760" cy="410" r="6" fill="var(--amber)"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="statusline"><span class="dot"></span> status: Ready &nbsp;·&nbsp; uptime: 9y</div>
+    <h1>Yaroslav Ivchenkov</h1>
+    <div class="role">Senior Software Engineer — Kubernetes Platform Engineering</div>
+    <div class="loc">Remote</div>
+    <p class="lede">I help engineering teams turn fragile Kubernetes clusters into infrastructure that upgrades, scales, and heals itself — whatever hardware it has to run on.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="about">
+    <h2 class="eyebrow">how I help</h2>
+    <p>I close the gap between a cluster's desired state and what's actually running — building the operators, admission controls, and multi-cluster tooling that let a platform look after itself.</p>
+    <p>In practice: CRD-based operators that encode real operational judgment. Multi-cluster orchestration that behaves the same whether the target is a hyperscaler region or a rack in a data center. Helm charts and CLIs a team can actually run, day to day, long after rollout.</p>
+  </section>
+
+  <section class="focus">
+    <h2 class="eyebrow">what I bring</h2>
+    <div class="focus-grid">
+      <div class="resource"><div class="kind">Operator</div><h3 class="name">CRD reconciliation</h3><div class="desc">Software that watches a system and fixes drift on its own, so nobody gets paged for it.</div></div>
+      <div class="resource"><div class="kind">Multi-cluster</div><h3 class="name">Cluster API (CAPI)</h3><div class="desc">One provisioning story across vSphere, OpenStack, AWS, bare-metal/SSH, and whatever's next.</div></div>
+      <div class="resource"><div class="kind">Delivery</div><h3 class="name">Helm &amp; CLI tooling</h3><div class="desc">Packaging a cluster ships confidently — versioned, upgradeable, no manual pre-flight required.</div></div>
+      <div class="resource"><div class="kind">Security</div><h3 class="name">Admission control</h3><div class="desc">Automated policy checks that stop unsafe changes before they reach production.</div></div>
+      <div class="resource"><div class="kind">Lifecycle</div><h3 class="name">Zero-drama upgrades</h3><div class="desc">Version-gated rollouts and day-two automation, so upgrading a cluster stops being an event.</div></div>
+      <div class="resource"><div class="kind">Workflow</div><h3 class="name">AI-augmented delivery</h3><div class="desc">I build my own agent tooling around the systems I own — it keeps several workstreams review-ready at once.</div></div>
+    </div>
+  </section>
+
+  <section class="certs">
+    <h2 class="eyebrow" style="width:100%">verified</h2>
+    <div class="cert"><b>CKA</b> — Certified Kubernetes Administrator, Linux Foundation</div>
+    <div class="cert"><b>AWS CCP</b> — AWS Certified Cloud Practitioner</div>
+  </section>
+
+  <section class="more">
+    <h2 class="eyebrow">full history</h2>
+    <p class="pointer">This is the short version. Current role and full background live on <a href="https://www.linkedin.com/in/yaroslav-ivchenkov/">LinkedIn</a>.</p>
+  </section>
+
+  <footer>
+    <h2 class="eyebrow">connect</h2>
+    <div class="links">
+      <a id="email-link" href="#">Email</a>
+      <a href="https://www.linkedin.com/in/yaroslav-ivchenkov/">LinkedIn ↗</a>
+      <a href="https://github.com/Algeran">GitHub ↗</a>
+    </div>
+    <div class="kv foot-kv">kubectl get engineer yaroslav-ivchenkov &nbsp;→&nbsp; READY <b>1/1</b> &nbsp; STATUS <b>Ready</b></div>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var user = "ivchenkov.yv+site", host = "gmail.com";
+    var el = document.getElementById("email-link");
+    if(el){ el.href = "mailto:" + user + "@" + host; }
+  })();
+</script>
+</body>
+</html>
