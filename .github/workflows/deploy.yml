@@ -23,7 +23,9 @@ jobs:
             --delete \
             --exclude ".git/*" \
             --exclude ".github/*" \
-            --exclude "README.md"
+            --exclude "README.md" \
+            --exclude "AGENTS.md" \
+            --exclude "CLAUDE.md"
 
           # aws s3 sync guesses "text/html" with no charset for .html files;
           # force the correct content-type explicitly so it doesn't rely on
